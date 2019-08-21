@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "0235d97fe4a92a7a8a123a985f9520f6",
+    "revision": "6ede56fc86e4a9aa38a188a0af69e8e0",
     "url": "/friends_maski/index.html"
   },
   {
-    "revision": "2adb24cd2d30dd6779af",
+    "revision": "906e2cad9d1f1f027410",
     "url": "/friends_maski/static/css/main.47d712dc.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/friends_maski/static/js/2.fc0bb13f.chunk.js"
   },
   {
-    "revision": "2adb24cd2d30dd6779af",
-    "url": "/friends_maski/static/js/main.4a2ece8e.chunk.js"
+    "revision": "906e2cad9d1f1f027410",
+    "url": "/friends_maski/static/js/main.ec563953.chunk.js"
   },
   {
     "revision": "1e4655dfab91c2d1d91b",
