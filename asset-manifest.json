@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/friends_maski/static/css/main.29701510.chunk.css",
-    "main.js": "/friends_maski/static/js/main.e5ad2eb4.chunk.js",
-    "main.js.map": "/friends_maski/static/js/main.e5ad2eb4.chunk.js.map",
+    "main.css": "/friends_maski/static/css/main.e2da72a6.chunk.css",
+    "main.js": "/friends_maski/static/js/main.d94b634d.chunk.js",
+    "main.js.map": "/friends_maski/static/js/main.d94b634d.chunk.js.map",
     "runtime~main.js": "/friends_maski/static/js/runtime~main.18aa0d2f.js",
     "runtime~main.js.map": "/friends_maski/static/js/runtime~main.18aa0d2f.js.map",
     "static/js/2.652e1c44.chunk.js": "/friends_maski/static/js/2.652e1c44.chunk.js",
     "static/js/2.652e1c44.chunk.js.map": "/friends_maski/static/js/2.652e1c44.chunk.js.map",
     "index.html": "/friends_maski/index.html",
-    "precache-manifest.c82a11e60f25e130955440f2044e3cd6.js": "/friends_maski/precache-manifest.c82a11e60f25e130955440f2044e3cd6.js",
+    "precache-manifest.056d7a81f08fc0359c44442035f96410.js": "/friends_maski/precache-manifest.056d7a81f08fc0359c44442035f96410.js",
     "service-worker.js": "/friends_maski/service-worker.js",
-    "static/css/main.29701510.chunk.css.map": "/friends_maski/static/css/main.29701510.chunk.css.map"
+    "static/css/main.e2da72a6.chunk.css.map": "/friends_maski/static/css/main.e2da72a6.chunk.css.map"
   }
 }
