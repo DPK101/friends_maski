@@ -1,0 +1,51 @@
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 10px;
+    border-bottom: 1px solid white;
+}
+
+.myButton {
+    padding: 5px 10px;
+    margin: 5px;
+    outline: none;
+    background: transparent;
+    color: white;
+    border-radius: 3px;
+    font-size: 1.3rem;
+    border: 1px solid white;
+    transition: all 0.3s;
+}
+
+.myButton:hover {
+    background: white;
+    color: black;
+    cursor: pointer;
+}
+.search-input {
+    height: 30px;
+    margin: 5px;
+    border-radius: 3px;
+    border: none;
+    padding: 5px;
+}
+
+.search-icon {
+    font-size: 1.2rem;
+    color: white;
+}
+
+.search-button {
+    background: none;
+    border: none;
+    padding: 5px;
+}
+
+.right-panel {
+    display: flex;
+}
+
+.logout {
+    font-size: 1.2rem;
+}
