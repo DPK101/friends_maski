@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { FRIENDS_DATA } from './friends-data';
 import Login from './components/login/Login';
 import Homepage from './components/homepage/Homepage';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 export default class App extends Component {
   constructor(props) {
@@ -11,6 +12,7 @@ export default class App extends Component {
       friendsData: FRIENDS_DATA
     }
     this.authenticate = this.authenticate.bind(this);
+    this.logout = this.logout.bind(this);
   }
 
   authenticate(username, password) {
@@ -23,18 +25,29 @@ export default class App extends Component {
     }
   }
 
+  logout() {
+    this.setState({
+      isLoggedIn: false
+    });
+  }
+
   render() {
     if(!this.state.isLoggedIn) {
       return (
-        <div>
-          {/* <Login authenticate={this.authenticate}/> */}
-          <Homepage /> {/* remove this */}
-        </div>
+        <Router>
+          <div>
+            <Route exact path="/" render={props =>(
+              <React.Fragment>
+                <Login authenticate={this.authenticate}/>
+              </React.Fragment>
+            )} />
+          </div>
+        </Router>
       )
     } else {
       return (
         <div>
-          <Homepage />
+          <Homepage logout={this.logout}/>
         </div>
       )
     }
