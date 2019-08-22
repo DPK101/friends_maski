@@ -16,12 +16,16 @@ export default class App extends Component {
   }
 
   authenticate(username, password) {
+    if(!username && !password) {
+      document.querySelector('.login-failed').textContent = "Please enter username and password";
+      return;
+    }
     if(username === 'friend' && password === 'HighSchool2006') {
       this.setState({
         isLoggedIn: true
       });
     } else {
-      alert('Invalid: Either username or/and password is wrong!');
+      document.querySelector('.login-failed').textContent = "Invalid: Either username or/and password is wrong!";
     }
   }
 
@@ -36,6 +40,7 @@ export default class App extends Component {
       return (
         <Router>
           <div>
+            {/* use /friends_maski/ for github pages */}
             <Route exact path="/" render={props =>(
               <React.Fragment>
                 <Login authenticate={this.authenticate}/>

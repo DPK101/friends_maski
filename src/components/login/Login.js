@@ -44,7 +44,8 @@ export default class Login extends Component {
         return (
             <div>
                 <div className="login-form">
-                    <h1>Login</h1>
+                    <h1 className="login-heading">Login</h1>
+                    <span className="login-failed"></span>
                     <div className="txtb">
                         <input type="text" onChange={this.hangleChangeOfUsername} value={this.state.username}></input>
                         <span data-placeholder="Username"></span>
@@ -53,7 +54,9 @@ export default class Login extends Component {
                         <input type="password" onChange={this.hangleChangeOfPassword} value={this.state.password}></input>
                         <span data-placeholder="Password"></span>
                     </div>
-                    <input type="submit" className="logbtn" value="Login" onClick={this.validate}></input>
+                    <button type="submit" className="logbtn" onClick={this.validate}>
+                        <span style={{position: "relative", top: "-2px"}}>Get in</span> <i class="fas fa-sign-in-alt"></i>
+                    </button>
                 </div>
             </div>
         )
