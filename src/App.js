@@ -1,60 +1,49 @@
 import React, { Component } from 'react'
 import { FRIENDS_DATA } from './friends-data';
-import Login from './components/login/Login';
-import Homepage from './components/homepage/Homepage';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import MainContainer from './containers/MainContainer';
+
+const defaultState = {
+  isLoggedIn: false,
+  data: [...FRIENDS_DATA],
+  visibilityFilter: 'SHOW_ALL'
+}
+
+const filterData = (defaultState, action) => {
+  return [...defaultState.data.filter(friend_detail => {
+    return (friend_detail.phone.toString().includes(action.query) || friend_detail.name.toLowerCase().includes(action.query))
+  })]
+}
+
+const reducer = (state=defaultState, action) => {
+  switch (action.type) {
+    case 'ON_LOG_IN': return { ...defaultState, isLoggedIn: true }
+    case 'FETCH_SEARCH_RESULT':
+      return {
+        isLoggedIn: true,
+        data: filterData(defaultState, action),
+        visibilityFilter: 'SEARCH_RESULTS'
+      }
+    case 'RESET_INITIAL_DATA': return { ...defaultState, isLoggedIn:  true };
+    case 'LOG_OUT':
+      return {
+        ...state, isLoggedIn: false
+      }
+    default: return state
+  }
+}
+
+const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+
 export default class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isLoggedIn: false,
-      friendsData: FRIENDS_DATA
-    }
-    this.authenticate = this.authenticate.bind(this);
-    this.logout = this.logout.bind(this);
-  }
-
-  authenticate(username, password) {
-    if(!username && !password) {
-      document.querySelector('.login-failed').textContent = "Please enter username and password";
-      return;
-    }
-    if(username === 'friend' && password === 'HighSchool2006') {
-      this.setState({
-        isLoggedIn: true
-      });
-    } else {
-      document.querySelector('.login-failed').textContent = "Invalid: Either username or/and password is wrong!";
-    }
-  }
-
-  logout() {
-    this.setState({
-      isLoggedIn: false
-    });
-  }
-
   render() {
-    if(!this.state.isLoggedIn) {
-      return (
-        <Router>
-          <div>
-            {/* use /friends_maski/ for github pages */}
-            <Route exact path="/" render={props =>(
-              <React.Fragment>
-                <Login authenticate={this.authenticate}/>
-              </React.Fragment>
-            )} />
-          </div>
-        </Router>
-      )
-    } else {
-      return (
-        <div>
-          <Homepage logout={this.logout}/>
-        </div>
-      )
-    }
+    return (
+      <Provider store={store}>
+        <MainContainer />
+      </Provider>
+    )
   }
 }

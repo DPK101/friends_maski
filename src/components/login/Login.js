@@ -9,9 +9,8 @@ export default class Login extends Component {
             username: '',
             password: ''
         }
-        this.validate = this.validate.bind(this);
-        this.hangleChangeOfUsername = this.hangleChangeOfUsername.bind(this);
-        this.hangleChangeOfPassword = this.hangleChangeOfPassword.bind(this);
+
+        this.authenticateUser = this.authenticateUser.bind(this);
 
         $(() => {
             $('.txtb input').on('focus', function () {
@@ -24,40 +23,38 @@ export default class Login extends Component {
         })
     }
 
-    validate() {
-        this.props.authenticate(this.state.username, this.state.password);
-    }
-
-    hangleChangeOfUsername(e) {
-        this.setState({
-            username: e.target.value
-        })
-    }
-
-    hangleChangeOfPassword(e) {
-        this.setState({
-            password: e.target.value
-        })
+    authenticateUser(username, password, authenticate) {
+        if (username === 'friend' && password === 'HighSchool2006') {
+            authenticate(username, password);
+        }
+        else {
+            document.querySelector('.login-failed').textContent = "Invalid: Either username or/and password is wrong!";
+        }
     }
 
     render() {
+        let username, password;
+        const authenticate = this.props.authenticate;
         return (
             <div>
-                <div className="login-form">
+                <form className="login-form" onSubmit={(e) => {
+                        e.preventDefault();
+                        this.authenticateUser(username.value, password.value, authenticate)
+                    }}>
                     <h1 className="login-heading">Login</h1>
                     <span className="login-failed"></span>
                     <div className="txtb">
-                        <input type="text" onChange={this.hangleChangeOfUsername} value={this.state.username}></input>
+                        <input type="text" ref={node => username = node} required></input>
                         <span data-placeholder="Username"></span>
                     </div>
                     <div className="txtb">
-                        <input type="password" onChange={this.hangleChangeOfPassword} value={this.state.password}></input>
+                        <input type="password" ref={node => password = node} required></input>
                         <span data-placeholder="Password"></span>
                     </div>
-                    <button type="submit" className="logbtn" onClick={this.validate}>
-                        <span style={{position: "relative", top: "-2px"}}>Get in</span> <i class="fas fa-sign-in-alt"></i>
+                    <button type="submit" className="logbtn">
+                        <span style={{position: "relative", top: "-2px"}}>Get in</span> <i className="fas fa-sign-in-alt"></i>
                     </button>
-                </div>
+                </form>
             </div>
         )
     }

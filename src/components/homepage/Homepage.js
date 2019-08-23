@@ -1,13 +1,13 @@
 import React from 'react'
-import FriendsList from '../friends-list/FriendsList';
 import './homepage.css'
-import Navbar from '../navbar/Navbar';
+import NavContainer from '../../containers/NavContainer';
+import FriendsListContainer from '../../containers/FriendsListContainer';
 
 export default function Homepage(props) {
     return (
         <div className="main">
-            <Navbar logout={props.logout}/>
-            <FriendsList />
+            <NavContainer />
+            <FriendsListContainer />
         </div>
     )
 }
